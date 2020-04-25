@@ -53,4 +53,13 @@ def self.find_by_name(name)
   DB[:conn].execute(sql, name)
 end
 
+  def self.find_by(attribute)
+    if attribute.values[0].is_a? String
+      sql = "SELECT * FROM #{self.table_name} WHERE #{attribute.keys[0]} = '#{attribute.values[0]}'"
+    else
+      sql = "SELECT * FROM #{self.table_name} WHERE #{attribute.keys[0]} = '#{attribute.values[0]}'"
+    end
+        a =  DB[:conn].execute(sql)
+  end 
+
 end
